@@ -1,0 +1,61 @@
+{
+  "name": "app-brain-extraction-v2",
+  "github": "gamorosino/app-brain-extraction-v2",
+  "desc": "Skull-strip a T1w volume with FSL's bet.",
+  "config": {
+    "t1": {
+      "type": "input",
+      "file_id": "t1",
+      "input_id": "t1"
+    },
+    "out": {
+      "type": "output",
+      "file_id": "brain",
+      "output_id": "brain"
+    },
+    "frac": {
+      "id": "frac",
+      "type": "float",
+      "placeholder": "0.5",
+      "advanced": false,
+      "desc": "BET fractional intensity threshold (0-1)",
+      "default": 0.5
+    },
+    "robust": {
+      "id": "robust",
+      "type": "boolean",
+      "placeholder": "",
+      "advanced": false,
+      "desc": "Use BET's robust brain center estimation (-R)",
+      "default": false
+    },
+    "bias_neck_cleanup": {
+      "id": "bias_neck_cleanup",
+      "type": "boolean",
+      "placeholder": "",
+      "advanced": false,
+      "desc": "Bias field + neck cleanup (-B)",
+      "default": false
+    }
+  },
+  "inputs": [
+    {
+      "id": "t1",
+      "datatype": "neuro/t1",
+      "datatype_tags": [],
+      "optional": false,
+      "multi": false,
+      "advanced": false
+    }
+  ],
+  "outputs": [
+    {
+      "id": "brain",
+      "desc": "Brain-extracted T1w volume",
+      "datatype": "neuro/t1",
+      "datatype_tags": [],
+      "archive": true
+    }
+  ],
+  "invoke": "python3 brain_extract.py --t1 {t1} --out {out} --frac {frac} {robust} {bias_neck_cleanup}"
+}
