@@ -41,7 +41,7 @@
   "inputs": [
     {
       "id": "t1",
-      "datatype": "neuro/t1",
+      "datatype": "neuro/anat/t1w",
       "datatype_tags": [],
       "optional": false,
       "multi": false,
@@ -52,7 +52,7 @@
     {
       "id": "brain",
       "desc": "Brain-extracted T1w volume",
-      "datatype": "neuro/t1",
+      "datatype": "neuro/anat/t1w",
       "datatype_tags": [],
       "archive": true
     }
